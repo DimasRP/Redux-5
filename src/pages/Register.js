@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getRegister } from '../redux/actions/authAction'
+import { postRegister } from '../redux/actions/authAction'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const dispatch = useDispatch()
-    const {dataReg} = useSelector((state) => state)
-    console.log("ini data regis", dataReg.token);
+    const {dataRegister} = useSelector((state) => state)
+    console.log("Regis", dataRegister.token);
         
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -22,7 +23,7 @@ const Register = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        dispatch(getRegister(email, password))
+        dispatch(postRegister(email, password))
     }
 
     console.log();
@@ -35,11 +36,17 @@ const Register = () => {
         <br />
         <label htmlFor="">Password : </label>
         <input type="password" onChange={(e) => handlePassword(e)}/>
-        <br />
-        <button onClick={handleSubmit}>Submit</button>
+        
+        <div>
+            <Link to="/">
+            <button>Back</button>
+            </Link>
+            <button onClick={handleSubmit}>Submit</button>
+        </div>
         {
-            !!dataReg.token.length && <p>Login Berhasil</p>
+            !!dataRegister.token.length && `Selamat Berhasil Login ${dataRegister.token}`
         }
+        
     </div>
   )
 }
