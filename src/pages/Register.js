@@ -36,7 +36,8 @@ const Register = () => {
         <br />
         <label htmlFor="">Password : </label>
         <input type="password" onChange={(e) => handlePassword(e)}/>
-        
+
+
         <div>
             <Link to="/">
             <button>Back</button>
