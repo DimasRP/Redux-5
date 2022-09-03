@@ -26,7 +26,6 @@ const Register = () => {
         dispatch(postRegister(email, password))
     }
 
-    console.log();
 
   return (
     <div>
