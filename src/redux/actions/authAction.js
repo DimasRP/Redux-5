@@ -26,14 +26,14 @@ export const postRegister = (email, password) => (dispatch) => {
 
 }
 
-export const postLogin = (email, password) => (dispatch) => {
+export const postLogin = (payload) => (dispatch) => {
 
     // console.log("data", email + password);
     
-    const payload = {
-        email: email,
-        password: password
-    }
+    // const payload = {
+    //     email: email,
+    //     password: password
+    // }
 
     axios
     .post("https://reqres.in/api/login", payload)
