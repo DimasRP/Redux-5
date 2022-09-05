@@ -2,3 +2,15 @@ button{
     border-color: aqua;
     background-color: white;
 }
+.login{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.buttonLogin{
+    display: flex;
+    gap: 5px;
+    justify-content: space-around
+}

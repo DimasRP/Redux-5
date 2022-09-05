@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { postLogin } from "../redux/actions/authAction";
+import { InputText } from 'primereact/inputtext';
+import { Button } from 'primereact/button';
+import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme
+import "primereact/resources/primereact.min.css";                  //core css
+import "primeicons/primeicons.css";         
+import 'primeflex/primeflex.css';
+// import 'primeflex/primeflex.css';
 import "./style.css"
 
 const Login = () =>{
@@ -10,6 +17,7 @@ const Login = () =>{
     const [password, setPassword] = useState()
     const dispatch = useDispatch()
     const {dataRegister} = useSelector((state) => state)
+    const [loading, setLoading] = useState(false);
     console.log("Regis", dataRegister.token);
         
     const handleEmail = (e) => {
@@ -24,25 +32,32 @@ const Login = () =>{
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
         dispatch(postLogin(email, password))
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     }
-
     console.log();
 
     return(
-        <div>
+        <div className="login">
             <h2>Login</h2>
-            <label >Email : </label>
-            <input type="text" onChange={(e)=> handleEmail(e)}/>
+            <span className="p-float-label">
+                <InputText id="username"  type="text" onChange={(e)=> handleEmail(e)}/>
+                <label htmlFor="username">Username</label>
+            </span>
             <br />
-            <label >Password : </label>
-            <input type="password" onChange={(e) => handlePassword(e)}/>
-            <div>
+            <span className="p-float-label">
+                <InputText type="password" onChange={(e) => handlePassword(e)}/>
+                <label htmlFor="password">Password</label>
+            </span>
+            <br></br>
+            <div className="buttonLogin">
                 <Link to="/">
-                <button>Back</button>
+                <Button label="Back" className="p-button-secondary" />
                 </Link>
-                <button onClick={handleSubmit}>Submit</button>
+                <Button label="Submit" loading={loading} onClick={handleSubmit} />
             </div>
             
             {

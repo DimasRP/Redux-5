@@ -46,14 +46,13 @@ class ClassLogin extends Component{
                     <button onClick={this.handleSubmit}>Submit</button>
                 </div>
                 
-                {/* {
-                    !!dataRegister.tokenLogin.length && 
+                {
+                    !!this.props.tokenLoginlength && 
                     <div> 
                         <h1>Selamat Berhasil Login.</h1> 
-                        <p>Token Anda</p> <h2>{dataRegister.tokenLogin}</h2>
+                        <p>Token Anda</p> <h2>{this.props.tokenLogin}</h2>
                         </div>
-                } */}
-                
+                }
             </div>
         )
     }
